@@ -13,4 +13,5 @@ public sealed class Participant
 
     public MeetingId MeetingId { get; private set; }
     public Meeting Meeting { get; private set; }
+
 }
