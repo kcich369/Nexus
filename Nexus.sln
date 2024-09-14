@@ -42,6 +42,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.ExternalServices.Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.Endpoints", "Nexus.Shared.Endpoints\Nexus.Shared.Endpoints.csproj", "{909ED42F-AFC0-4E16-BE79-787E77AD1A28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.IntegrationEvents", "Nexus.Meetings.IntegrationEvents\Nexus.Meetings.IntegrationEvents.csproj", "{8D639754-EADE-41F0-9B5A-AB7F5DAFDEF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.ExternalServices.Application", "Nexus.ExternalServices.Application\Nexus.ExternalServices.Application.csproj", "{CD7F2462-4493-432B-8594-ED3850FC265B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.IntegrationEvents", "Nexus.Shared.IntegrationEvents\Nexus.Shared.IntegrationEvents.csproj", "{4351EBC6-3E33-4B5C-BBC7-3AD6AAE38F2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +72,9 @@ Global
 		{C270427C-66A4-404D-B891-1A4EFC83F853} = {8005C499-5B0A-47A2-BE73-22E468DAF690}
 		{D26D4500-A29E-4CAB-8719-C685C1F0B483} = {1735F77E-5E5D-411D-BA2B-F2749A50203B}
 		{909ED42F-AFC0-4E16-BE79-787E77AD1A28} = {23882E65-0219-476B-A3B5-39CD4868911E}
+		{8D639754-EADE-41F0-9B5A-AB7F5DAFDEF4} = {8005C499-5B0A-47A2-BE73-22E468DAF690}
+		{CD7F2462-4493-432B-8594-ED3850FC265B} = {1735F77E-5E5D-411D-BA2B-F2749A50203B}
+		{4351EBC6-3E33-4B5C-BBC7-3AD6AAE38F2C} = {23882E65-0219-476B-A3B5-39CD4868911E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{24AC2FD3-BC17-46BB-9F0C-D44971350683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -128,5 +137,17 @@ Global
 		{909ED42F-AFC0-4E16-BE79-787E77AD1A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{909ED42F-AFC0-4E16-BE79-787E77AD1A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{909ED42F-AFC0-4E16-BE79-787E77AD1A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D639754-EADE-41F0-9B5A-AB7F5DAFDEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D639754-EADE-41F0-9B5A-AB7F5DAFDEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D639754-EADE-41F0-9B5A-AB7F5DAFDEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D639754-EADE-41F0-9B5A-AB7F5DAFDEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7F2462-4493-432B-8594-ED3850FC265B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7F2462-4493-432B-8594-ED3850FC265B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7F2462-4493-432B-8594-ED3850FC265B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7F2462-4493-432B-8594-ED3850FC265B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4351EBC6-3E33-4B5C-BBC7-3AD6AAE38F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4351EBC6-3E33-4B5C-BBC7-3AD6AAE38F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4351EBC6-3E33-4B5C-BBC7-3AD6AAE38F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4351EBC6-3E33-4B5C-BBC7-3AD6AAE38F2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
