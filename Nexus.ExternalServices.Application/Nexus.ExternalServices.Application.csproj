@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Nexus.Meetings.IntegrationEvents\Nexus.Meetings.IntegrationEvents.csproj" />
+    </ItemGroup>
+
 </Project>

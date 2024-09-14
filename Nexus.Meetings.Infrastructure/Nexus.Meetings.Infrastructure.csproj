@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Nexus.Meetings.Application\Nexus.Meetings.Application.csproj" />
+      <ProjectReference Include="..\Nexus.Meetings.Presistence\Nexus.Meetings.Presistence.csproj" />
+    </ItemGroup>
+
 </Project>

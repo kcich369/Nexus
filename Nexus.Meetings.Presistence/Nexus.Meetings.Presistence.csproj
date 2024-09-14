@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Nexus.Shared.Persistence\Nexus.Shared.Persistence.csproj" />
+    </ItemGroup>
+
 </Project>
