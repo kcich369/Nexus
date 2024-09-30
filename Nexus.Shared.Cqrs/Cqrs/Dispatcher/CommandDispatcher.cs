@@ -9,9 +9,12 @@ internal class CommandDispatcher(IServiceProvider serviceProvider) : ICommandDis
         where TCommand : ICommand<IResult<TCommandResult>> where TCommandResult : ICommandResult
     {
         var validator = serviceProvider.GetRequiredService<ICommandValidator<TCommand, TCommandResult>>();
-        var validationResult = await validator.Validate(command);
-        if (validationResult.IsError)
-            return validationResult;
+        if (validator is not null)
+        {
+            var validationResult = await validator.Validate(command);
+            if (validationResult.IsError)
+                return validationResult;
+        }
         
         var handler = serviceProvider.GetRequiredService<ICommandHandler<TCommand, TCommandResult>>();
         return await handler.Handle(command);
