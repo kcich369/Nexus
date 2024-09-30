@@ -1,4 +1,5 @@
 ﻿using Nexus.Shared.Mediator;
+using Nexus.Shared.Mediator.Cqrs;
 
 namespace Nexus.Meetings.Application.Commands.Create;
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Nexus.Shared.Domain.Result;
 using Nexus.Shared.Mediator;
 using Microsoft.AspNetCore.Routing;
+using Nexus.Shared.Mediator.Cqrs;
 
 namespace Nexus.Shared.Endpoints;
 
