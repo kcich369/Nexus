@@ -3,7 +3,7 @@
 namespace Nexus.Shared.Mediator.Cqrs;
 
 public interface ICommandValidator<in TRequest, TResult> 
-    where TRequest : ICommand<TResult> where TResult : ICommandResult
+    where TRequest : ICommand<IResult<TResult>> where TResult : ICommandResult
 {
     ValueTask<IResult<TResult>> Validate(TRequest command);
 }

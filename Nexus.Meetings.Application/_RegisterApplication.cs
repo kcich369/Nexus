@@ -7,6 +7,6 @@ public static class _RegisterApplication
 {
     public static IServiceCollection RegisterApplication(this IServiceCollection services)
     {
-        return services.RegisterMediator();
+        return services.RegisterCqrs();
     }
 }
