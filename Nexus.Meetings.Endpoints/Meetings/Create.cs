@@ -1,6 +1,9 @@
-﻿namespace Nexus.Meetings.Endpoints.Meetings;
+﻿using Nexus.Meetings.Application.Commands.Create;
+using Nexus.Shared.Endpoints;
 
-public class Create
+namespace Nexus.Meetings.Endpoints.Meetings;
+
+public class Create : CommandEndpoint<CreateMeeting,CreateMeetingResult>
 {
     
 }

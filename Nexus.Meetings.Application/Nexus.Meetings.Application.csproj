@@ -8,7 +8,16 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Nexus.Meetings.IntegrationEvents\Nexus.Meetings.IntegrationEvents.csproj" />
+      <ProjectReference Include="..\Nexus.Shared.Mediator\Nexus.Shared.Mediator.csproj" />
       <ProjectReference Include="..\Nexus.User.Domain\Nexus.User.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Queries\" />
     </ItemGroup>
 
 </Project>

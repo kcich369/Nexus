@@ -11,4 +11,9 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Nexus.Meetings.Endpoints\Nexus.Meetings.Endpoints.csproj" />
+      <ProjectReference Include="..\Nexus.User.Endpoints\Nexus.User.Endpoints.csproj" />
+    </ItemGroup>
+
 </Project>
