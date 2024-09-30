@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{23882E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.Domain", "Nexus.Shared.Domain\Nexus.Shared.Domain.csproj", "{24AC2FD3-BC17-46BB-9F0C-D44971350683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.Mediator", "Nexus.Shared.Mediator\Nexus.Shared.Mediator.csproj", "{3E2CCFD7-7828-42AF-9CB7-292DC7DB9AFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.Cqrs", "Nexus.Shared.Cqrs\Nexus.Shared.Cqrs.csproj", "{3E2CCFD7-7828-42AF-9CB7-292DC7DB9AFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.Infrastructure", "Nexus.Shared.Infrastructure\Nexus.Shared.Infrastructure.csproj", "{82E0A5DD-9282-46FB-8EE5-84DCB99B7CC0}"
 EndProject

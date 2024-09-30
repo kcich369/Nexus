@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Nexus.Shared.Mediator\Nexus.Shared.Mediator.csproj" />
+      <ProjectReference Include="..\Nexus.Shared.Cqrs\Nexus.Shared.Cqrs.csproj" />
     </ItemGroup>
 
     <ItemGroup>

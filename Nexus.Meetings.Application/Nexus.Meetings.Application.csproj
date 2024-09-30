@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Nexus.Meetings.IntegrationEvents\Nexus.Meetings.IntegrationEvents.csproj" />
-      <ProjectReference Include="..\Nexus.Shared.Mediator\Nexus.Shared.Mediator.csproj" />
+      <ProjectReference Include="..\Nexus.Shared.Cqrs\Nexus.Shared.Cqrs.csproj" />
       <ProjectReference Include="..\Nexus.User.Domain\Nexus.User.Domain.csproj" />
     </ItemGroup>
 

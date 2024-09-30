@@ -1,7 +1,5 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Nexus.Shared.Domain.Result;
-using Nexus.Shared.Mediator;
 using Microsoft.AspNetCore.Routing;
 using Nexus.Shared.Mediator.Cqrs;
 
@@ -9,7 +7,6 @@ namespace Nexus.Shared.Endpoints;
 
 public abstract class CommandEndpoint<TCommand, TResult> where TCommand : ICommand<IResult<TResult>>
 {
-    private readonly IMediator _mediator;
 
     // public CommandEndpoint(IMediator mediator)
     // {
@@ -22,11 +19,11 @@ public abstract class CommandEndpoint<TCommand, TResult> where TCommand : IComma
 
     public async Task Handle(IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/weatherforecast", async (TCommand command, IMediator mediator, CancellationToken ct) =>
-        {
-            var result = await _mediator.Send(command, ct);
-           return result.IsError ? "IsError" : "Success";
-        });
+        // endpoints.MapGet("/weatherforecast",  a =>
+        // {
+        //     return null;
+        //    // return result.IsError ? "IsError" : "Success";
+        // });
     }
 
     // public void Handle2(IEndpointRouteBuilder app)
