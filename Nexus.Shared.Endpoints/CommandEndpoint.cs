@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Nexus.Shared.Domain.Result;
-using Microsoft.AspNetCore.Routing;
+﻿using Nexus.Shared.Domain.Result;
 using Nexus.Shared.Mediator.Cqrs;
 
 namespace Nexus.Shared.Endpoints;
@@ -17,14 +15,14 @@ public abstract class CommandEndpoint<TCommand, TResult> where TCommand : IComma
     {
     }
 
-    public async Task Handle(IEndpointRouteBuilder endpoints)
-    {
-        // endpoints.MapGet("/weatherforecast",  a =>
-        // {
-        //     return null;
-        //    // return result.IsError ? "IsError" : "Success";
-        // });
-    }
+    // public async Task Handle(IEndpointRouteBuilder endpoints)
+    // {
+    //     // endpoints.MapGet("/weatherforecast",  a =>
+    //     // {
+    //     //     return null;
+    //     //    // return result.IsError ? "IsError" : "Success";
+    //     // });
+    // }
 
     // public void Handle2(IEndpointRouteBuilder app)
     // {
