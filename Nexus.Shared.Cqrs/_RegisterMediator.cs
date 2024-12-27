@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Nexus.Shared.Mediator.Cqrs;
 using Nexus.Shared.Mediator.Cqrs.Dispatcher;
+using Nexus.Shared.Mediator.Cqrs.Interceptors;
 
 namespace Nexus.Shared.Mediator;
 
@@ -32,6 +33,14 @@ public static class _RegisterMediator
         {
             selector.FromCallingAssembly()
                 .AddClasses(filter => { filter.AssignableTo(typeof(ICommandValidator<,>)); })
+                .AsImplementedInterfaces()
+                .WithSingletonLifetime();
+        });
+        
+        services.Scan(selector =>
+        {
+            selector.FromCallingAssembly()
+                .AddClasses(filter => { filter.AssignableTo(typeof(ICommandInterceptor)); })
                 .AsImplementedInterfaces()
                 .WithSingletonLifetime();
         });
