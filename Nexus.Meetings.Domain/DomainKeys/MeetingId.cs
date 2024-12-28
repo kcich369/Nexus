@@ -2,4 +2,4 @@
 
 namespace Nexus.Meetings.Domain.DomainKeys;
 
-public sealed record UserId(Ulid Id) : EntityKey<Ulid>(Id);
+public sealed record MeetingId(Ulid Id) : EntityId<Ulid>(Id);
