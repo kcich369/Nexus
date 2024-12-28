@@ -5,10 +5,10 @@ namespace Nexus.Shared.Mediator.Cqrs.Dispatcher;
 
 internal class QueryDispatcher(IServiceProvider serviceProvider) : IQueryDispatcher
 {
-    public ValueTask<IResult<TQueryResult>> Dispatch<TQuery, TQueryResult>(TQuery query)
+    public ValueTask<IResult<TQueryResult>> Dispatch<TQuery, TQueryResult>(TQuery query, CancellationToken token)
         where TQuery : IQuery<IResult<TQueryResult>> where TQueryResult : IQueryResult
     {
         var handler = serviceProvider.GetRequiredService<IQueryHandler<TQuery, TQueryResult>>();
-        return handler.Handle(query);
+        return handler.Handle(query, token);
     }
 }

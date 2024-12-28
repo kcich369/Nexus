@@ -10,15 +10,15 @@ public static class _RegisterMediator
 {
     public static IServiceCollection RegisterCqrs(this IServiceCollection services)
     {
-        services.TryAddSingleton<ICommandDispatcher, CommandDispatcher>();
-        services.TryAddSingleton<IQueryDispatcher, QueryDispatcher>();
+        services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
+        services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();
 
         services.Scan(selector =>
         {
             selector.FromCallingAssembly()
                 .AddClasses(filter => { filter.AssignableTo(typeof(IQueryHandler<,>)); })
                 .AsImplementedInterfaces()
-                .WithSingletonLifetime();
+                .WithScopedLifetime();
         });
         
         services.Scan(selector =>
@@ -26,7 +26,7 @@ public static class _RegisterMediator
             selector.FromCallingAssembly()
                 .AddClasses(filter => { filter.AssignableTo(typeof(ICommandHandler<,>)); })
                 .AsImplementedInterfaces()
-                .WithSingletonLifetime();
+                .WithScopedLifetime();
         });
         
         services.Scan(selector =>
@@ -34,19 +34,41 @@ public static class _RegisterMediator
             selector.FromCallingAssembly()
                 .AddClasses(filter => { filter.AssignableTo(typeof(ICommandValidator<,>)); })
                 .AsImplementedInterfaces()
-                .WithSingletonLifetime();
+                .WithScopedLifetime();
         });
         
         services.Scan(selector =>
         {
             selector.FromCallingAssembly()
-                .AddClasses(filter => { filter.AssignableTo(typeof(ICommandInterceptor)); })
+                .AddClasses(filter => { filter.AssignableTo(typeof(IInboundCommandInterceptor<,>)); })
                 .AsImplementedInterfaces()
-                .WithSingletonLifetime();
+                .WithScopedLifetime();
         });
-
-        services.AddSingleton<IQueryDispatcher, QueryDispatcher>()
-            .Decorate<ICommandDispatcher, LoggingDispatcherDecorator>();
+        
+        services.Scan(selector =>
+        {
+            selector.FromCallingAssembly()
+                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundCommandInterceptor<,>)); })
+                .AsImplementedInterfaces()
+                .WithScopedLifetime();
+        });
+        
+        services.Scan(selector =>
+        {
+            selector.FromCallingAssembly()
+                .AddClasses(filter => { filter.AssignableTo(typeof(IInboundQueryInterceptor<,>)); })
+                .AsImplementedInterfaces()
+                .WithScopedLifetime();
+        });
+        
+        services.Scan(selector =>
+        {
+            selector.FromCallingAssembly()
+                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundCommandInterceptor<,>)); })
+                .AsImplementedInterfaces()
+                .WithScopedLifetime();
+        });
+        
         return services;
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Nexus.Shared.Domain.Result;
 
-namespace Nexus.Shared.Mediator.Cqrs;
+namespace Nexus.Shared.Mediator.Cqrs.Interceptors;
 
-public interface ICommandHandler<in TCommand, TResult> 
+public interface IInboundCommandInterceptor<in TCommand, TResult> 
     where TCommand : ICommand<IResult<TResult>> where TResult : ICommandResult
 {
+    byte Order { get; }
     ValueTask<IResult<TResult>> Handle(TCommand command, CancellationToken token);
 }
-
