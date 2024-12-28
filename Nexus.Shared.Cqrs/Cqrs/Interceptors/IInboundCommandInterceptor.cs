@@ -2,9 +2,8 @@
 
 namespace Nexus.Shared.Mediator.Cqrs.Interceptors;
 
-public interface IInboundCommandInterceptor<in TCommand, TResult> 
-    where TCommand : ICommand<IResult<TResult>> where TResult : ICommandResult
+public interface IInboundCommandInterceptor<TCommand> where TCommand : ICommand
 {
     byte Order { get; }
-    ValueTask<IResult<TResult>> Handle(TCommand command, CancellationToken token);
+    ValueTask<IResult<TCommand>> Handle(TCommand command, CancellationToken token);
 }

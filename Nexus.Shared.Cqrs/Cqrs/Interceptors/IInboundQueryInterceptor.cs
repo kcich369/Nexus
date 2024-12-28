@@ -2,9 +2,9 @@
 
 namespace Nexus.Shared.Mediator.Cqrs.Interceptors;
 
-public interface IInboundQueryInterceptor<in TQuery, TResult> 
-    where TQuery : IQuery<IResult<TResult>> where TResult : IQueryResult
+public interface IInboundQueryInterceptor<TQuery> 
+    where TQuery : IQuery
 {
     byte Order { get; }
-    ValueTask<IResult<TResult>> Handle(TQuery command, CancellationToken token);
+    ValueTask<IResult<TQuery>> Handle(TQuery command, CancellationToken token);
 }

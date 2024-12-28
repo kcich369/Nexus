@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Nexus.Shared.Mediator.Cqrs;
 using Nexus.Shared.Mediator.Cqrs.Dispatcher;
 using Nexus.Shared.Mediator.Cqrs.Interceptors;
+using Nexus.Shared.Mediator.Cqrs.Resolvers;
 
 namespace Nexus.Shared.Mediator;
 
@@ -10,8 +11,8 @@ public static class _RegisterMediator
 {
     public static IServiceCollection RegisterCqrs(this IServiceCollection services)
     {
-        services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
-        services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();
+        services.TryAddSingleton<ICommandDispatcher, CommandDispatcher>();
+        services.TryAddSingleton<IQueryDispatcher, QueryDispatcher>();
 
         services.Scan(selector =>
         {
@@ -34,13 +35,13 @@ public static class _RegisterMediator
             selector.FromCallingAssembly()
                 .AddClasses(filter => { filter.AssignableTo(typeof(ICommandValidator<,>)); })
                 .AsImplementedInterfaces()
-                .WithScopedLifetime();
+                .WithTransientLifetime();
         });
         
         services.Scan(selector =>
         {
             selector.FromCallingAssembly()
-                .AddClasses(filter => { filter.AssignableTo(typeof(IInboundCommandInterceptor<,>)); })
+                .AddClasses(filter => { filter.AssignableTo(typeof(IInboundCommandInterceptor<>)); })
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
         });
@@ -48,7 +49,7 @@ public static class _RegisterMediator
         services.Scan(selector =>
         {
             selector.FromCallingAssembly()
-                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundCommandInterceptor<,>)); })
+                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundCommandInterceptor<>)); })
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
         });
@@ -56,7 +57,7 @@ public static class _RegisterMediator
         services.Scan(selector =>
         {
             selector.FromCallingAssembly()
-                .AddClasses(filter => { filter.AssignableTo(typeof(IInboundQueryInterceptor<,>)); })
+                .AddClasses(filter => { filter.AssignableTo(typeof(IInboundQueryInterceptor<>)); })
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
         });
@@ -64,11 +65,16 @@ public static class _RegisterMediator
         services.Scan(selector =>
         {
             selector.FromCallingAssembly()
-                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundCommandInterceptor<,>)); })
+                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundQueryInterceptor<>)); })
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
         });
         
+        services.TryAddSingleton<CommandInterceptorsResolver>();
+        services.TryAddSingleton<QueryInterceptorsResolver>();
+        services.TryAddSingleton<ValidatorsResolver>();
+        services.TryAddSingleton<HandlersResolver>();
+
         return services;
     }
 }
