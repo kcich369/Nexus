@@ -4,8 +4,7 @@ using Nexus.Shared.Domain.Result;
 
 namespace Nexus.Shared.Cqrs.Dispatcher;
 
-internal class CommandDispatcher(
-    HandlersResolver handlersResolver,
+internal class CommandDispatcher(HandlersResolver handlersResolver,
     CommandInterceptorsResolver commandInterceptorsResolver,
     ValidatorsResolver validatorsResolver) : ICommandDispatcher
 {
@@ -26,7 +25,7 @@ internal class CommandDispatcher(
                 return validationResult;
         }
 
-        var handler = handlersResolver.GetHandler<TCommand, TCommandResult>();
+        var handler = handlersResolver.GetCommandHandler<TCommand, TCommandResult>();
         var result = await handler.Handle(command, token);
 
         foreach (var outboundInterceptor in commandInterceptorsResolver.OutboundInterceptors<TCommandResult>())
