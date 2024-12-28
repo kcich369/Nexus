@@ -1,4 +1,4 @@
-﻿namespace Nexus.Shared.Mediator.Cqrs;
+﻿namespace Nexus.Shared.Cqrs.Interfaces;
 
 public interface ICommand
 {

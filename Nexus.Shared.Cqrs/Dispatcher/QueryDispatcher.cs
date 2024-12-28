@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Nexus.Shared.Cqrs.Interfaces;
 using Nexus.Shared.Domain.Result;
+using Nexus.Shared.Mediator.Cqrs;
 
-namespace Nexus.Shared.Mediator.Cqrs.Dispatcher;
+namespace Nexus.Shared.Cqrs.Dispatcher;
 
 internal class QueryDispatcher(IServiceProvider serviceProvider) : IQueryDispatcher
 {

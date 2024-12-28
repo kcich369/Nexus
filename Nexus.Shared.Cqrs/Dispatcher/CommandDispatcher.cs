@@ -1,7 +1,8 @@
-﻿using Nexus.Shared.Domain.Result;
-using Nexus.Shared.Mediator.Cqrs.Resolvers;
+﻿using Nexus.Shared.Cqrs.Interfaces;
+using Nexus.Shared.Cqrs.Resolvers;
+using Nexus.Shared.Domain.Result;
 
-namespace Nexus.Shared.Mediator.Cqrs.Dispatcher;
+namespace Nexus.Shared.Cqrs.Dispatcher;
 
 internal class CommandDispatcher(
     HandlersResolver handlersResolver,

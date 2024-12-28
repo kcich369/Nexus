@@ -1,6 +1,8 @@
-﻿using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Cqrs.Interfaces;
+using Nexus.Shared.Domain.Result;
+using Nexus.Shared.Mediator.Cqrs;
 
-namespace Nexus.Shared.Mediator.Cqrs.Dispatcher;
+namespace Nexus.Shared.Cqrs.Dispatcher;
 
 public interface ICommandDispatcher
 {

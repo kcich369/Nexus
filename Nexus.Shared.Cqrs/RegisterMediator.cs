@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Nexus.Shared.Mediator.Cqrs;
-using Nexus.Shared.Mediator.Cqrs.Dispatcher;
-using Nexus.Shared.Mediator.Cqrs.Interceptors;
-using Nexus.Shared.Mediator.Cqrs.Resolvers;
+using Nexus.Shared.Cqrs.Dispatcher;
+using Nexus.Shared.Cqrs.Interceptors;
+using Nexus.Shared.Cqrs.Interfaces;
+using Nexus.Shared.Cqrs.Resolvers;
 
 namespace Nexus.Shared.Mediator;
 
-public static class _RegisterMediator
+public static class RegisterMediator
 {
     public static IServiceCollection RegisterCqrs(this IServiceCollection services)
     {

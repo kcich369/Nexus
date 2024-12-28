@@ -1,4 +1,5 @@
-﻿using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Cqrs.Interfaces;
+using Nexus.Shared.Domain.Result;
 using Nexus.Shared.Mediator;
 using Nexus.Shared.Mediator.Cqrs;
 

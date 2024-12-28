@@ -1,8 +1,8 @@
-﻿
-using Microsoft.Extensions.DependencyInjection;
-using Nexus.Shared.Mediator.Cqrs.Interceptors;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Nexus.Shared.Cqrs.Interceptors;
+using Nexus.Shared.Cqrs.Interfaces;
 
-namespace Nexus.Shared.Mediator.Cqrs.Resolvers;
+namespace Nexus.Shared.Cqrs.Resolvers;
 
 internal class QueryInterceptorsResolver(IServiceProvider serviceProvider)
 {

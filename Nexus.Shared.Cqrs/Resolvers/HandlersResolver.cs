@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Nexus.Shared.Cqrs.Interfaces;
 using Nexus.Shared.Domain.Result;
 
-namespace Nexus.Shared.Mediator.Cqrs.Resolvers;
+namespace Nexus.Shared.Cqrs.Resolvers;
 
 internal class HandlersResolver(IServiceProvider serviceProvider)
 {
