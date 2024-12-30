@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing;
-using Nexus.Shared.Endpoints.Routes;
+﻿using Nexus.Shared.Endpoints.Routes;
 
 namespace Nexus.Shared.Endpoints;
 
