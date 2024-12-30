@@ -1,10 +1,16 @@
-﻿namespace Nexus.Shared.Endpoints;
+﻿using Microsoft.AspNetCore.Routing;
+using Nexus.Shared.Endpoints.Routes;
+
+namespace Nexus.Shared.Endpoints;
 
 public abstract class Endpoint
 {
-    protected Endpoint()
+    protected string Route { get; set; }
+
+    protected Endpoint(ApiEndpointRoute endpointRoute)
     {
-        
+        Route = $"{endpointRoute.Main}/{endpointRoute.Route}";
     }
-    private string _route = string.Empty;
+    
+    protected abstract void Map(IEndpointRouteBuilder app); 
 }

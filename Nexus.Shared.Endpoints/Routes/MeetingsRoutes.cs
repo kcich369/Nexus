@@ -1,6 +1,6 @@
 ﻿namespace Nexus.Shared.Endpoints.Routes;
 
-public class MeetingsRoutes : Route<MeetingsRoutes>
+public sealed class MeetingsRoutes : Route<MeetingsRoutes>
 {
-    public static ApiEndpointRoute CreateMeeting => CreateEndpoint(nameof(CreateMeeting));
+    public static ApiEndpointRoute Create = CreateEndpoint(nameof(Create));
 }

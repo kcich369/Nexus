@@ -6,5 +6,5 @@ namespace Nexus.Shared.Cqrs.Dispatcher;
 public interface ICommandDispatcher
 {
     ValueTask<IResult<TCommandResult>> Dispatch<TCommand, TCommandResult>(TCommand command, CancellationToken token)
-        where TCommand : ICommand<IResult<TCommandResult>> where TCommandResult : ICommandResult;
+        where TCommand : ICommand<TCommandResult> where TCommandResult : ICommandResult;
 }

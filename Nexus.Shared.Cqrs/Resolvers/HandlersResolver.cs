@@ -7,7 +7,7 @@ namespace Nexus.Shared.Cqrs.Resolvers;
 internal class HandlersResolver(IServiceProvider serviceProvider)
 {
     public ICommandHandler<TCommand, TCommandResult> GetCommandHandler<TCommand, TCommandResult>()
-        where TCommand : ICommand<IResult<TCommandResult>> where TCommandResult : ICommandResult =>
+        where TCommand : ICommand<TCommandResult> where TCommandResult : ICommandResult =>
         serviceProvider.GetRequiredService<ICommandHandler<TCommand, TCommandResult>>();
     
     public IQueryHandler<TQuery, TQueryResult> GetQueryHandler<TQuery, TQueryResult>()

@@ -10,7 +10,7 @@ internal class CommandDispatcher(HandlersResolver handlersResolver,
 {
     public async ValueTask<IResult<TCommandResult>> Dispatch<TCommand, TCommandResult>(TCommand command,
         CancellationToken token)
-        where TCommand : ICommand<IResult<TCommandResult>> where TCommandResult : ICommandResult
+        where TCommand : ICommand<TCommandResult> where TCommandResult : ICommandResult
     {
         foreach (var inboundInterceptor in commandInterceptorsResolver.InboundInterceptors<TCommand>())
         {

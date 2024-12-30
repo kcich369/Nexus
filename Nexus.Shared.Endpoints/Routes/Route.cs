@@ -8,9 +8,8 @@ public interface IRoute
 
 public abstract class Route<T> : IRoute where T : IRoute
 {
-    private static string Main { get; set; } = typeof(T).Name;
-
-    protected static ApiEndpointRoute CreateEndpoint(params string[] routes) => new ApiEndpointRoute(Main, routes);
+    protected static ApiEndpointRoute CreateEndpoint(params string[] routes) =>
+        new ApiEndpointRoute(typeof(T).Name, routes);
 }
 
 public class ApiEndpointRoute
@@ -20,15 +19,16 @@ public class ApiEndpointRoute
 
     public ApiEndpointRoute(string main, params string[] routes)
     {
-        Main = SetMain(main);
+        Main = ChangeMain(main);
         Route = string.Join("/", routes.Select(x => ToKebabCase(x.Trim())));
     }
 
-    private static string SetMain(string main)
+    public string ChangeMain(string main)
     {
         if (main.Contains("Route") || main.Contains("Routes"))
             main = main.Replace("Routes", string.Empty).Replace("Route", string.Empty);
-        return main;
+        Main = main;
+        return Main;
     }
 
     private static string ToKebabCase(string input)
