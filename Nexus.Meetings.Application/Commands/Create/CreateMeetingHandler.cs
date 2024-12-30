@@ -1,7 +1,4 @@
-﻿using Nexus.Shared.Mediator;
-using Nexus.Shared.Mediator.Cqrs;
-
-namespace Nexus.Meetings.Application.Commands.Create;
+﻿namespace Nexus.Meetings.Application.Commands.Create;
 
 public class CreateMeetingHandler 
     // : ICommandHandler<CreateMeeting,CreateMeetingResult>

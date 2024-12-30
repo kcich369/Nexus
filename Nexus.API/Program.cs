@@ -1,4 +1,6 @@
 using Nexus.Meetings.Endpoints;
+using Nexus.Shared.Cqrs.Dispatcher;
+using Nexus.Shared.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +18,4 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-// app.ReqisterMeetingsEndpoints();
-
-
 app.Run();

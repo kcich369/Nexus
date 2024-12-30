@@ -1,6 +1,5 @@
 ﻿using Nexus.Shared.Cqrs.Interfaces;
 using Nexus.Shared.Domain.Result;
-using Nexus.Shared.Mediator.Cqrs;
 
 namespace Nexus.Shared.Cqrs.Interceptors;
 
