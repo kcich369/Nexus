@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Routing;
+using Nexus.Shared.Endpoints.Abstractions;
 
 namespace Nexus.Shared.Endpoints;
 
-public static class EndpointRegistrar
+public static class EndpointRegistration
 {
-    public static IEndpointRouteBuilder RegisterEndpoints(IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder RegisterEndpoints(this IEndpointRouteBuilder app)
     {
         var types = Assembly.GetExecutingAssembly().GetTypes();
         // && t.IsClass
@@ -13,7 +14,6 @@ public static class EndpointRegistrar
             .Where(t => typeof(Endpoint).IsAssignableFrom(t))
             .ToList();
 
-        // && t.IsClass
         var derivedTypes = types
             .Where(t => endpointTypes.Any(x => x.IsAssignableFrom(t)))
             .ToList();

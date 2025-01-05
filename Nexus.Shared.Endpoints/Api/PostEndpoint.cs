@@ -2,17 +2,15 @@
 using Microsoft.AspNetCore.Routing;
 using Nexus.Shared.Cqrs.Dispatcher;
 using Nexus.Shared.Cqrs.Interfaces;
+using Nexus.Shared.Endpoints.Abstractions;
 using Nexus.Shared.Endpoints.Routes;
 
-namespace Nexus.Shared.Endpoints;
+namespace Nexus.Shared.Endpoints.Api;
 
-public class PostEndpoint<TCommand, TCommandResult> : Endpoint
-    where TCommand : ICommand<TCommandResult> where TCommandResult : ICommandResult
+public abstract class PostEndpoint<TCommand, TCommandResult>(ApiEndpointRoute endpointRoute) : Endpoint(endpointRoute)
+    where TCommand : ICommand<TCommandResult>
+    where TCommandResult : ICommandResult
 {
-    protected PostEndpoint(ApiEndpointRoute endpointRoute) : base(endpointRoute)
-    {
-    }
-
     protected override void Map(IEndpointRouteBuilder app)
     {
         app.MapPost(Route,

@@ -11,6 +11,6 @@ internal class HandlersResolver(IServiceProvider serviceProvider)
         serviceProvider.GetRequiredService<ICommandHandler<TCommand, TCommandResult>>();
     
     public IQueryHandler<TQuery, TQueryResult> GetQueryHandler<TQuery, TQueryResult>()
-        where TQuery : IQuery<IResult<TQueryResult>> where TQueryResult : IQueryResult =>
+        where TQuery : IQuery<TQueryResult> where TQueryResult : IQueryResult =>
         serviceProvider.GetRequiredService<IQueryHandler<TQuery, TQueryResult>>();
 }

@@ -8,7 +8,7 @@ internal class QueryDispatcher(HandlersResolver handlersResolver,
     QueryInterceptorsResolver queryInterceptorsResolver) : IQueryDispatcher
 {
     public async ValueTask<IResult<TQueryResult>> Dispatch<TQuery, TQueryResult>(TQuery query, CancellationToken token)
-        where TQuery : IQuery<IResult<TQueryResult>> where TQueryResult : IQueryResult
+        where TQuery : IQuery<TQueryResult> where TQueryResult : IQueryResult
     {
         foreach (var inboundInterceptor in queryInterceptorsResolver.InboundInterceptors<TQuery>())
         {
