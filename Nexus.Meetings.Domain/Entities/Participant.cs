@@ -1,4 +1,4 @@
-﻿using Nexus.Meetings.Domain.DomainKeys;
+﻿using Nexus.Meetings.Domain.Entities.Keys;
 using Nexus.Meetings.Domain.ValueObjects;
 using Nexus.Shared.Domain.Domain;
 
