@@ -1,4 +1,4 @@
-﻿namespace Nexus.Meetings.Application.Commands.Create;
+﻿namespace Nexus.Meetings.Application.Commands.Meetings.Create;
 
 public class CreateMeetingHandler 
     // : ICommandHandler<CreateMeeting,CreateMeetingResult>

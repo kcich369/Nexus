@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.ReqisterMeetingsModule();
+builder.Services.RegisterEndpoints();
 
 var app = builder.Build();
 

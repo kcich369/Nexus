@@ -7,6 +7,6 @@ public static class _RegisterInfrastructure
 {
     public static IServiceCollection RegisterInfrastructure(this IServiceCollection services)
     {
-        return services.RegisterApplication();
+        return services;
     }
 }
