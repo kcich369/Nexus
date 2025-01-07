@@ -1,8 +1,9 @@
 ﻿using Nexus.Meetings.Domain.DomainKeys;
+using Nexus.Meetings.Domain.Entities;
 using Nexus.Meetings.Domain.ValueObjects;
 using Nexus.Shared.Domain.Domain;
 
-namespace Nexus.Meetings.Domain.Domains;
+namespace Nexus.Meetings.Domain.AggregateRoots;
 
 public sealed class Meeting :  AggregateRoot<MeetingId>
 {

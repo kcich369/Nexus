@@ -5,7 +5,7 @@ namespace Nexus.Meetings.Endpoints;
 
 public static class _RegisterEndpoints
 {
-    public static IServiceCollection RegisterEndpoints(this IServiceCollection services)
+    public static IServiceCollection RegisterMeetingEndpoints(this IServiceCollection services)
     {
         return services.RegisterInfrastructure();
     }
