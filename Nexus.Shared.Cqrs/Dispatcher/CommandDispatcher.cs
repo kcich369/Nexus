@@ -22,7 +22,7 @@ internal class CommandDispatcher(HandlersResolver handlersResolver,
         {
             var validationResult = await validator.Validate(command, token);
             if (validationResult.IsError)
-                return validationResult;
+                return Result<TCommandResult>.Error(validationResult.ErrorMessages);
         }
 
         var handler = handlersResolver.GetCommandHandler<TCommand, TCommandResult>();
