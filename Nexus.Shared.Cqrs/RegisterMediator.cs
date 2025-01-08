@@ -11,8 +11,7 @@ public static class RegisterMediator
 {
     public static IServiceCollection RegisterCqrs(this IServiceCollection services)
     {
-        services.TryAddSingleton<ICommandDispatcher, CommandDispatcher>();
-        services.TryAddSingleton<IQueryDispatcher, QueryDispatcher>();
+ 
 
         services.Scan(selector =>
         {
@@ -26,6 +25,14 @@ public static class RegisterMediator
         {
             selector.FromCallingAssembly()
                 .AddClasses(filter => { filter.AssignableTo(typeof(ICommandHandler<,>)); })
+                .AsImplementedInterfaces()
+                .WithScopedLifetime();
+        });
+        
+        services.Scan(selector =>
+        {
+            selector.FromCallingAssembly()
+                .AddClasses(filter => { filter.AssignableTo(typeof(IEventHandler<>)); })
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
         });
@@ -70,10 +77,21 @@ public static class RegisterMediator
                 .WithScopedLifetime();
         });
         
+        services.Scan(selector =>
+        {
+            selector.FromCallingAssembly()
+                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundQueryInterceptor<>)); })
+                .AsImplementedInterfaces()
+                .WithScopedLifetime();
+        });
+        
+        services.TryAddSingleton<ICommandDispatcher, CommandDispatcher>();
+        services.TryAddSingleton<IQueryDispatcher, QueryDispatcher>();
         services.TryAddSingleton<CommandInterceptorsResolver>();
         services.TryAddSingleton<QueryInterceptorsResolver>();
         services.TryAddSingleton<ValidatorsResolver>();
         services.TryAddSingleton<HandlersResolver>();
+        services.TryAddSingleton<EventHandlersResolver>();
 
         return services;
     }
