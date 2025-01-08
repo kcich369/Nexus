@@ -4,7 +4,7 @@ using Nexus.Shared.Domain.Events;
 
 namespace Nexus.Shared.Cqrs.Resolvers;
 
-public class EventHandlersResolver(IServiceProvider serviceProvider)
+internal class EventHandlersResolver(IServiceProvider serviceProvider)
 {
     public IEnumerable<IEventHandler<TEvent>> GetEventHandlers<TEvent>()
         where TEvent : IDomainEvent =>

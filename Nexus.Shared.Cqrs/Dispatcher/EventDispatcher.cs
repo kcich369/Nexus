@@ -3,7 +3,7 @@ using Nexus.Shared.Domain.Events;
 
 namespace Nexus.Shared.Cqrs.Dispatcher;
 
-public class EventDispatcher(EventHandlersResolver eventHandlersResolver) : IEventDispatcher
+internal class EventDispatcher(EventHandlersResolver eventHandlersResolver) : IEventDispatcher
 {
     public async Task<bool> Dispatch<TEvent>(TEvent @event, CancellationToken token) where TEvent : IDomainEvent
     {
