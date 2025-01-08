@@ -4,6 +4,6 @@ using Nexus.Shared.Endpoints.Api;
 
 namespace Nexus.Meetings.Endpoints.Meetings;
 
-public class Create() : PostEndpoint<CreateMeetingCommand,CreateMeetingCommandResult>(MeetingsRouting.Create)
+public class Create() : PostEndpoint<CreateMeetingCommand, CreateMeetingCommandResult>(MeetingsRouting.Create)
 {
 }
