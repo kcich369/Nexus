@@ -8,7 +8,7 @@ public interface IRoute
 
 public abstract class Route<T> : IRoute where T : IRoute
 {
-    protected static ApiEndpointRoute CreateEndpoint(params string[] routes) =>
+    protected static ApiEndpointRoute CreateRoute(params string[] routes) =>
         new ApiEndpointRoute(typeof(T).Name, routes);
 }
 

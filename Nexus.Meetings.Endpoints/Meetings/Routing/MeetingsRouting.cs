@@ -4,5 +4,5 @@ namespace Nexus.Meetings.Endpoints.Meetings.Routing;
 
 public abstract class MeetingsRouting : Route<MeetingsRouting>
 {
-    public static ApiEndpointRoute Create => CreateEndpoint(nameof(Create));
+    public static ApiEndpointRoute Create => CreateRoute(nameof(Create));
 }
