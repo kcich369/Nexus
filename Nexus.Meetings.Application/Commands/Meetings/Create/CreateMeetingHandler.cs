@@ -1,9 +1,11 @@
-﻿namespace Nexus.Meetings.Application.Commands.Meetings.Create;
+﻿using Nexus.Shared.Cqrs.Interfaces;
+using Nexus.Shared.Domain.Result;
 
-public class CreateMeetingHandler 
-    // : ICommandHandler<CreateMeeting,CreateMeetingResult>
+namespace Nexus.Meetings.Application.Commands.Meetings.Create;
+
+public class CreateMeetingHandler : ICommandHandler<CreateMeetingCommand, CreateMeetingCommandResult>
 {
-    public Task<CreateMeetingResult> Handle(CreateMeeting request, CancellationToken cancellationToken)
+    public ValueTask<IResult<CreateMeetingCommandResult>> Handle(CreateMeetingCommand command, CancellationToken token)
     {
         throw new NotImplementedException();
     }
