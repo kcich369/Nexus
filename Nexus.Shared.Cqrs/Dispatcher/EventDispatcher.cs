@@ -1,11 +1,13 @@
-﻿using Nexus.Shared.Domain.Events;
+﻿using Nexus.Shared.Cqrs.Resolvers;
+using Nexus.Shared.Domain.Events;
 
 namespace Nexus.Shared.Cqrs.Dispatcher;
 
-public class EventDispatcher:IEventDispatcher
+public class EventDispatcher(EventHandlersResolver eventHandlersResolver) : IEventDispatcher
 {
-    public ValueTask Dispatch<TEvent>(TEvent @event, CancellationToken token) where TEvent : IDomainEvent
+    public async Task<bool> Dispatch<TEvent>(TEvent @event, CancellationToken token) where TEvent : IDomainEvent
     {
-        throw new NotImplementedException();
+        await Task.WhenAll(eventHandlersResolver.GetEventHandlers<TEvent>().Select(x => x.Publish(@event, token)));
+        return true;
     }
 }

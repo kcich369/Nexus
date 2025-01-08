@@ -4,6 +4,6 @@ namespace Nexus.Shared.Cqrs.Dispatcher;
 
 public interface IEventDispatcher
 {
-    ValueTask Dispatch<TEvent>(TEvent @event, CancellationToken token)
+    Task<bool> Dispatch<TEvent>(TEvent @event, CancellationToken token)
         where TEvent : IDomainEvent;
 }

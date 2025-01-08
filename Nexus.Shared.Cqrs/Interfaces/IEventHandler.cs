@@ -1,6 +1,8 @@
-﻿namespace Nexus.Shared.Cqrs.Interfaces;
+﻿using Nexus.Shared.Domain.Events;
 
-public interface IEventHandler<in TEvent> where TEvent : IIntegrationEvent
+namespace Nexus.Shared.Cqrs.Interfaces;
+
+public interface IEventHandler<in TEvent> where TEvent : IDomainEvent
 {
-    ValueTask Handle(TEvent @event, CancellationToken token);
+    Task<bool> Publish(TEvent @event, CancellationToken token);
 }
