@@ -5,8 +5,9 @@ namespace Nexus.Meetings.Application.Commands.Meetings.Create;
 
 public class CreateMeetingHandler : ICommandHandler<CreateMeetingCommand, CreateMeetingCommandResult>
 {
-    public ValueTask<IResult<CreateMeetingCommandResult>> Handle(CreateMeetingCommand command, CancellationToken token)
+    public async ValueTask<IResult<CreateMeetingCommandResult>> Handle(CreateMeetingCommand command, CancellationToken token)
     {
-        throw new NotImplementedException();
+        var a = "HANDLER";
+        return Result<CreateMeetingCommandResult>.Success(new CreateMeetingCommandResult("WORKS"));
     }
 }
