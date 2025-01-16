@@ -1,5 +1,7 @@
-﻿using Nexus.Shared.Domain.Guards;
-using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Domain.DomainResults;
+using Nexus.Shared.Domain.DomainResults.Abstractions;
+using Nexus.Shared.Domain.Guards;
+using Nexus.Shared.Domain.Results;
 using Nexus.Shared.Domain.ValueObjects.Base;
 
 namespace Nexus.Meetings.Domain.ValueObjects;
@@ -15,13 +17,11 @@ public record Duration : ValueObject
         To = to;
     }
 
-    public static DomainResult<Duration> Create(DateTimeOffset from, DateTimeOffset to)
+    public static IDomainResult<Duration> Create(DateTimeOffset from, DateTimeOffset to)
     {
         var result = DateTimeGuard.Create(from.DateTime).Before(to.DateTime)
             .MaxDiffInHours(to.DateTime, 3)
             .ToDomainResult();
-        return result
-            ? DomainResult<Duration>.Error(result)
-            : DomainResult<Duration>.Success(new(from, to));
+        return result.MapToResult(new Duration(from, to));
     }
 }

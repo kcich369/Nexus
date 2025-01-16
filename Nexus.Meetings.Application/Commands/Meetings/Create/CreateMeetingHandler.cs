@@ -1,5 +1,6 @@
 ﻿using Nexus.Shared.Cqrs.Interfaces;
-using Nexus.Shared.Domain.Result;
+using Nexus.Shared.Domain.Results;
+using Nexus.Shared.Domain.Results.Abstractions;
 
 namespace Nexus.Meetings.Application.Commands.Meetings.Create;
 
@@ -9,6 +10,6 @@ public class CreateMeetingHandler : ICommandHandler<CreateMeetingCommand, Create
         IValidationContext<CreateMeetingCommand> validationContext, CancellationToken token)
     {
         var a = "HANDLER";
-        return Result<CreateMeetingCommandResult>.Success(new CreateMeetingCommandResult("WORKS"));
+        return OkResult<CreateMeetingCommandResult>.Create(new CreateMeetingCommandResult("WORKS"));
     }
 }

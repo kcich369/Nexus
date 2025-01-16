@@ -1,5 +1,7 @@
-﻿using Nexus.Shared.Domain.Guards;
-using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Domain.DomainResults;
+using Nexus.Shared.Domain.DomainResults.Abstractions;
+using Nexus.Shared.Domain.Guards;
+using Nexus.Shared.Domain.Results;
 using Nexus.Shared.Domain.ValueObjects.Base;
 
 namespace Nexus.Meetings.Domain.ValueObjects;
@@ -13,14 +15,15 @@ public record Name : ValueObject
         Value = name;
     }
 
-    public static DomainResult<Name> Create(string name)
+    public static IDomainResult<Name> Create(string name)
     {
         var result = StringGuard.Create(name)
             .NotNullAndEmpty()
             .HasMaxValue(50)
             .ToDomainResult();
-        return result
-            ? DomainResult<Name>.Error(result)
-            : DomainResult<Name>.Success(new Name(name));
+        
+        return result.IsError
+            ? ErrorDomainResult<Name>.Create(result.ErrorMessages)
+            : SuccessDomainResult<Name>.Create(new Name(name));
     }
 }

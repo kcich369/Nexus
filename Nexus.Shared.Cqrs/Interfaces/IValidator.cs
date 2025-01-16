@@ -1,4 +1,4 @@
-﻿using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Domain.Results.Abstractions;
 
 namespace Nexus.Shared.Cqrs.Interfaces;
 

@@ -2,13 +2,10 @@
 
 namespace Nexus.Shared.Domain.Guards;
 
-public sealed class DateTimeGuard : Guard
+public sealed class DateTimeGuard : Guard<DateTime>
 {
-    private readonly DateTime _value;
-
-    private DateTimeGuard(DateTime value, string prefix) : base(prefix)
+    private DateTimeGuard(DateTime value, string prefix) : base(value, prefix)
     {
-        _value = value;
     }
 
     public static DateTimeGuard Create(DateTime value, string errorPrefix = null) => new(value, errorPrefix);
@@ -17,7 +14,7 @@ public sealed class DateTimeGuard : Guard
     public DateTimeGuard HasCurrentDate()
     {
         var currentDate = DateOnly.FromDateTime(DateTime.UtcNow);
-        var valueDate = DateOnly.FromDateTime(_value);
+        var valueDate = DateOnly.FromDateTime(Value);
         if (currentDate.CompareTo(valueDate) == 0)
             AddError("IT_IS_NOT_CURRENT_DATE");
         return this;
@@ -25,14 +22,14 @@ public sealed class DateTimeGuard : Guard
 
     public DateTimeGuard Before(DateTime value)
     {
-        if (_value < value)
+        if (Value < value)
             AddError("DATE_SHOULD_BEFORE");
         return this;
     }
     
     public DateTimeGuard MaxDiffInHours(DateTime value, int hours)
     {
-        if ((_value - value).Hours > hours)
+        if ((Value - value).Hours > hours)
             AddError($"DIFFERENCE_BETWEEN_DATES_SHOULD_{hours}_HOURS");
         return this;
     }

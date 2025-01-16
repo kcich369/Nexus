@@ -1,5 +1,7 @@
-﻿using Nexus.Shared.Domain.Guards;
-using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Domain.DomainResults;
+using Nexus.Shared.Domain.DomainResults.Abstractions;
+using Nexus.Shared.Domain.Guards;
+using Nexus.Shared.Domain.Results;
 using Nexus.Shared.Domain.ValueObjects.Base;
 
 namespace Nexus.Shared.Domain.ValueObjects;
@@ -17,14 +19,13 @@ public sealed record UpdatedBy : ValueObject
         Value = value;
     }
 
-    public static DomainResult<UpdatedBy> Create(string userName)
+    public static IDomainResult<UpdatedBy> Create(string userName)
     {
         var result = StringGuard.Create(userName)
             .HasMaxValue(50)
             .NotNullAndEmpty()
             .ToDomainResult();
-        return result
-            ? DomainResult<UpdatedBy>.Error(result)
-            : DomainResult<UpdatedBy>.Success(new(userName));
+        
+        return result.MapToResult(new UpdatedBy(userName));
     }
 }

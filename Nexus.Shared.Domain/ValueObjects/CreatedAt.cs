@@ -1,5 +1,7 @@
-﻿using Nexus.Shared.Domain.Guards;
-using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Domain.DomainResults;
+using Nexus.Shared.Domain.DomainResults.Abstractions;
+using Nexus.Shared.Domain.Guards;
+using Nexus.Shared.Domain.Results;
 using Nexus.Shared.Domain.ValueObjects.Base;
 
 namespace Nexus.Shared.Domain.ValueObjects;
@@ -17,13 +19,14 @@ public sealed record CreatedAt : ValueObject
         Value = value;
     }
 
-    public static DomainResult<CreatedAt> Create(DateTime createdAt)
+    public static IDomainResult<CreatedAt> Create(DateTime createdAt)
     {
         var result = DateTimeGuard.Create(createdAt)
             .HasCurrentDate()
             .ToDomainResult();
-        return result
-            ? DomainResult<CreatedAt>.Error(result)
-            : DomainResult<CreatedAt>.Success(new(createdAt));
+        
+        return result.IsError
+            ? ErrorDomainResult<CreatedAt>.Create(result.ErrorMessages)
+            : SuccessDomainResult<CreatedAt>.Create(new CreatedAt(createdAt));
     }
 }

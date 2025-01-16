@@ -1,5 +1,7 @@
-﻿using Nexus.Shared.Domain.Guards;
-using Nexus.Shared.Domain.Result;
+﻿using Nexus.Shared.Domain.DomainResults;
+using Nexus.Shared.Domain.DomainResults.Abstractions;
+using Nexus.Shared.Domain.Guards;
+using Nexus.Shared.Domain.Results;
 using Nexus.Shared.Domain.ValueObjects.Base;
 
 namespace Nexus.Meetings.Domain.ValueObjects;
@@ -13,14 +15,12 @@ public record Email : ValueObject
         Value = surname;
     }
 
-    public static DomainResult<Email> Create(string email)
+    public static IDomainResult<Email> Create(string email)
     {
         var result = StringGuard.Create(email)
             .HasMaxValue(100)
             .IsEmail()
             .ToDomainResult();
-        return result
-            ? DomainResult<Email>.Error(result)
-            : DomainResult<Email>.Success(new Email(email));
+        return result.MapToResult(new Email(email));
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Nexus.Shared.Cqrs.Interfaces;
 using Nexus.Shared.Cqrs.Resolvers;
-using Nexus.Shared.Domain.Result;
+using Nexus.Shared.Domain.Results;
+using Nexus.Shared.Domain.Results.Abstractions;
 
 namespace Nexus.Shared.Cqrs.Dispatcher;
 
@@ -24,7 +25,7 @@ internal class CommandDispatcher(
         {
             validationContext = await validator.Validate(command, token);
             if (validationContext.IsError)
-                return Result<TCommandResult>.Error(validationContext);
+                return validationContext.MapToResult<TCommandResult>(default);
         }
 
         var handler = handlersResolver.GetCommandHandler<TCommand, TCommandResult>();

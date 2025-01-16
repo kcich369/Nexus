@@ -2,27 +2,25 @@
 
 namespace Nexus.Shared.Domain.Guards;
 
-public sealed class StringGuard : Guard
+public sealed class StringGuard : Guard<string>
 {
-    private readonly string _value;
 
-    private StringGuard(string value, string errorPrefix = null) : base(errorPrefix)
+    private StringGuard(string value, string errorPrefix = null) : base(value, errorPrefix)
     {
-        _value = value;
     }
 
     public static StringGuard Create(string value, string errorPrefix = null) => new(value, errorPrefix);
 
     public StringGuard HasMaxValue(int length)
     {
-        if (_value.Length > length)
+        if (Value.Length > length)
             AddError($"MAX_LENGTH_IS: {length}");
         return this;
     }
 
     public StringGuard NotNullAndEmpty()
     {
-        if (string.IsNullOrEmpty(_value))
+        if (string.IsNullOrEmpty(Value))
             AddError($"VALUE_IS_NULL_OR_EMPTY");
         return this;
     }
@@ -34,9 +32,9 @@ public sealed class StringGuard : Guard
 
     public StringGuard IsPhoneNumber()
     {
-        if (_value.Length != 9)
+        if (Value.Length != 9)
             AddError($"IT_IS_NOT_PHONE_NUMBER_VALUE");
-        if (_value.Select(char.IsNumber).Any(x => !x))
+        if (Value.Select(char.IsNumber).Any(x => !x))
             AddError($"IT_IS_NOT_PHONE_NUMBER_VALUE");
         return this;
     }
@@ -45,9 +43,9 @@ public sealed class StringGuard : Guard
     {
         if (prefix.Length != 3)
             AddError($"IT_IS_NOT_PHONE_PREFIX_VALUE");
-        if (_value.Skip(1).Select(char.IsNumber).Any(x => !x))
+        if (Value.Skip(1).Select(char.IsNumber).Any(x => !x))
             AddError($"IT_IS_NOT_PHONE_PREFIX_VALUE");
-        if (_value[0] != '+')
+        if (Value[0] != '+')
             AddError($"IT_IS_NOT_PHONE_PREFIX_VALUE");
         return this;
     }
