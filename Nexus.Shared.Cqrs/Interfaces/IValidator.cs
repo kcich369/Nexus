@@ -2,8 +2,8 @@
 
 namespace Nexus.Shared.Cqrs.Interfaces;
 
-public interface ICommandValidator<TRequest, TResult> 
-    where TRequest : ICommand<TResult> where TResult : ICommandResult
+public interface ICommandValidator<TCommand, TCommandResult>
+    where TCommand : ICommand<TCommandResult> where TCommandResult : ICommandResult
 {
-    ValueTask<IResult<TRequest>> Validate(TRequest command, CancellationToken token);
+    ValueTask<IResult<IValidationContext<TCommand>>> Validate(TCommand command, CancellationToken token);
 }

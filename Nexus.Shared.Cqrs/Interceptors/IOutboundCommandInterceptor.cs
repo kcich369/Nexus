@@ -3,8 +3,9 @@ using Nexus.Shared.Domain.Result;
 
 namespace Nexus.Shared.Cqrs.Interceptors;
 
-public interface IOutboundCommandInterceptor<TResult> where TResult : ICommandResult
+public interface IOutboundCommandInterceptor<in TCommand, in TResult>
+    where TCommand : ICommand<TResult> where TResult : ICommandResult
 {
     byte Order { get; }
-    ValueTask<IResult<TResult>> Handle(IResult<TResult> result, CancellationToken token);
+    ValueTask<bool> Handle(TCommand command, IResult<TResult> result, CancellationToken token);
 }

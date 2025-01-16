@@ -57,5 +57,5 @@ public class Result<T> : Result, IResult<T>
         return new(errors);
     }
 
-    public static Result<T> Error(Result result) => new(result.ErrorMessages);
+    public static Result<T> Error(IResult result) => new(result.ErrorMessages);
 }

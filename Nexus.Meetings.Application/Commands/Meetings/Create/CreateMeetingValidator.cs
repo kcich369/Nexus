@@ -5,10 +5,10 @@ namespace Nexus.Meetings.Application.Commands.Meetings.Create;
 
 public class CreateMeetingValidator : ICommandValidator<CreateMeetingCommand, CreateMeetingCommandResult>
 {
-    public async ValueTask<IResult<CreateMeetingCommand>> Validate(CreateMeetingCommand command,
+    public async ValueTask<IResult<IValidationContext<CreateMeetingCommand>>> Validate(CreateMeetingCommand command,
         CancellationToken token)
     {
         var a = "VALIDATOR";
-        return Result<CreateMeetingCommand>.Success(command);
+        return Result<CreateMeetingCommandValidationContext>.Success(new CreateMeetingCommandValidationContext(11));
     }
 }

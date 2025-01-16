@@ -4,7 +4,8 @@ using Nexus.Shared.Domain.Result;
 
 namespace Nexus.Shared.Cqrs.Dispatcher;
 
-internal class CommandDispatcher(HandlersResolver handlersResolver,
+internal class CommandDispatcher(
+    HandlersResolver handlersResolver,
     CommandInterceptorsResolver commandInterceptorsResolver,
     ValidatorsResolver validatorsResolver) : ICommandDispatcher
 {
@@ -17,20 +18,22 @@ internal class CommandDispatcher(HandlersResolver handlersResolver,
             await inboundInterceptor.Handle(command, token);
         }
 
+        IResult<IValidationContext<TCommand>> validationContext = null;
         var validator = validatorsResolver.GetValidator<TCommand, TCommandResult>();
         if (validator is not null)
         {
-            var validationResult = await validator.Validate(command, token);
-            if (validationResult.IsError)
-                return Result<TCommandResult>.Error(validationResult.ErrorMessages);
+            validationContext = await validator.Validate(command, token);
+            if (validationContext.IsError)
+                return Result<TCommandResult>.Error(validationContext);
         }
 
         var handler = handlersResolver.GetCommandHandler<TCommand, TCommandResult>();
-        var result = await handler.Handle(command, token);
+        var result = await handler.Handle(command, validationContext?.Data, token);
 
-        foreach (var outboundInterceptor in commandInterceptorsResolver.OutboundInterceptors<TCommandResult>())
+        foreach (var outboundInterceptor in
+                 commandInterceptorsResolver.OutboundInterceptors<TCommand, TCommandResult>())
         {
-            await outboundInterceptor.Handle(result, token);
+            await outboundInterceptor.Handle(command, result, token);
         }
 
         return result;

@@ -7,6 +7,5 @@ namespace Nexus.Shared.Cqrs.Resolvers;
 internal class EventHandlersResolver(IServiceProvider serviceProvider)
 {
     public IEnumerable<IEventHandler<TEvent>> GetEventHandlers<TEvent>()
-        where TEvent : IDomainEvent =>
-        serviceProvider.GetServices<IEventHandler<TEvent>>();
+        where TEvent : IDomainEvent => serviceProvider.GetServices<IEventHandler<TEvent>>();
 }

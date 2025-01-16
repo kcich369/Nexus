@@ -2,9 +2,9 @@
 
 namespace Nexus.Shared.Cqrs.Interfaces;
 
-public interface ICommandHandler<in TCommand, TResult> 
+public interface ICommandHandler<TCommand, TResult> 
     where TCommand : ICommand<TResult> where TResult : ICommandResult
 {
-    ValueTask<IResult<TResult>> Handle(TCommand command, CancellationToken token);
+    ValueTask<IResult<TResult>> Handle(TCommand command, IValidationContext<TCommand> validationContext = null, CancellationToken token = default);
 }
 

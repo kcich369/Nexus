@@ -13,9 +13,9 @@ internal class CommandInterceptorsResolver(IServiceProvider serviceProvider)
             .ToList()
             .AsReadOnly();
 
-    public IReadOnlyCollection<IOutboundCommandInterceptor<TResult>> OutboundInterceptors<TResult>()
-        where TResult : ICommandResult =>
-        serviceProvider.GetServices<IOutboundCommandInterceptor<TResult>>()
+    public IReadOnlyCollection<IOutboundCommandInterceptor<TCommand, TResult>> OutboundInterceptors<TCommand, TResult>()
+        where TCommand : ICommand<TResult> where TResult : ICommandResult =>
+        serviceProvider.GetServices<IOutboundCommandInterceptor<TCommand, TResult>>()
             .OrderBy(x => x.Order)
             .ToList()
             .AsReadOnly();

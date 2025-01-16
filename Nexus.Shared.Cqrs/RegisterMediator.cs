@@ -56,7 +56,7 @@ public static class RegisterMediator
         services.Scan(selector =>
         {
             selector.FromCallingAssembly()
-                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundCommandInterceptor<>)); })
+                .AddClasses(filter => { filter.AssignableTo(typeof(IOutboundCommandInterceptor<,>)); })
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
         });
