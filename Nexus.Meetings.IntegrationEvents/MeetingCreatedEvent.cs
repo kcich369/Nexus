@@ -1,4 +1,4 @@
-﻿using Nexus.Shared.IntegrationEvents;
+﻿using Nexus.Shared.Domain.Events;
 
 namespace Nexus.Meetings.IntegrationEvents;
 
