@@ -17,9 +17,6 @@ public static class ConfigurationBuilderHelper
         return builder;
     }
 
-    public static IConfiguration Builds(this IConfigurationBuilder builder) =>
-        builder.Build();
-
     public static T BindSection<T>(this IConfiguration configuration, string? sectionName = null) where T : new()
     {
         var instance = new T();
@@ -39,11 +36,6 @@ public static class ConfigurationBuilderHelper
         return name;
     }
 
-    public static string GetConnectionString(this IConfiguration configuration, string name)
-    {
-        var value = configuration.GetConnectionString(name);
-        return value;
-    }
     public static string GetConnectionString(this IConfiguration configuration)
     {
         var connectionStringsSection = configuration.GetSection(ConnectionStrings);
