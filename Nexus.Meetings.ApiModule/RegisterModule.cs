@@ -1,12 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Nexus.Meetings.Application;
 using Nexus.Meetings.Infrastructure;
 
 namespace Nexus.Meetings.ApiModule;
 
-public static class _RegisterEndpoints
+public static class RegisterModule
 {
     public static IServiceCollection RegisterMeetingEndpoints(this IServiceCollection services)
     {
-        return services.RegisterInfrastructure();
+         services.RegisterApplication();
+         return services.RegisterInfrastructure();
+         return services.RegisterInfrastructure();
     }
 }

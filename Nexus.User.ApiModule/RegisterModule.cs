@@ -1,5 +1,5 @@
 ﻿namespace Nexus.User.ApiModule;
 
-public class Class1
+public class RegisterModule
 {
 }
