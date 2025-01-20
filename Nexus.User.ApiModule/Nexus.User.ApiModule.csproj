@@ -10,8 +10,4 @@
       <ProjectReference Include="..\Nexus.User.Endpoints\Nexus.User.Endpoints.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Endpoints\" />
-    </ItemGroup>
-
 </Project>
