@@ -8,19 +8,20 @@ namespace Nexus.Shared.DbScriptsManager;
 public static class RegisterDbUp
 {
     private const string Schema = "dbo";
-    private const string DirName = "dbo";
+    private const string FolderName = "Scripts";
+    private const string TableName = "ExecutedScripts";
 
-    public static void Register(string? connectionStringName = null, string? tableName = null)
+    public static void Register(string? connectionStringName = null)
     {
-        var assemblyName = Assembly.GetCallingAssembly().FullName?.Split('.')[1];
         var connectionString = GetConnectionString(connectionStringName);
+        
         EnsureDatabase.For.SqlDatabase(connectionString);
 
         var upgrader = DeployChanges.To
             .SqlDatabase(connectionString)
             .WithTransactionPerScript()
-            .JournalToSqlTable("dbo", tableName)
-            .WithScriptsFromFileSystem(DirName)
+            .JournalToSqlTable(Schema, GetTableName())
+            .WithScriptsFromFileSystem(FolderName)
             .Build();
 
         if (!upgrader.IsUpgradeRequired())
@@ -34,12 +35,17 @@ public static class RegisterDbUp
     {
         var config = ConfigurationBuilderHelper.CreateBuilder()
             .Build();
-
         var connectionString = "";
-        if (!connectionStringName.IsNullOrEmpty())
+        if (!string.IsNullOrEmpty(connectionStringName))
             connectionString = config.GetConnectionString(connectionStringName!);
         connectionString = config.GetConnectionString();
 
         return connectionString;
+    }
+    
+    public static string GetTableName()
+    {
+        var projectName = Assembly.GetCallingAssembly().FullName?.Split('.')[1];
+        return $"{projectName}{TableName}";
     }
 }
