@@ -5,13 +5,13 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Nexus.Shared.DbManager;
 
-public static class RegisterDbUp
+public static class DbUpManager
 {
     private const string Schema = "dbo";
     private const string FolderName = "Scripts";
     private const string TableName = "ExecutedScripts";
 
-    public static void Register(string? connectionStringName = null)
+    public static void ExecuteScripts(string? connectionStringName = null)
     {
         var connectionString = ConfigurationBuilderHelper.GetConnectionStringValue(connectionStringName);
         EnsureDatabase.For.SqlDatabase(connectionString);
