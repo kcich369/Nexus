@@ -36,7 +36,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.Presistence", "Nexus.Meetings.Presistence\Nexus.Meetings.Presistence.csproj", "{AB784E6A-9D6F-46B9-804F-DD108F26DF6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.Endpoints", "Nexus.Meetings.Endpoints\Nexus.Meetings.Endpoints.csproj", "{C270427C-66A4-404D-B891-1A4EFC83F853}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.ApiModule", "Nexus.Meetings.ApiModule\Nexus.Meetings.ApiModule.csproj", "{C270427C-66A4-404D-B891-1A4EFC83F853}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.ExternalServices.Infrastructure", "Nexus.ExternalServices.Infrastructure\Nexus.ExternalServices.Infrastructure.csproj", "{D26D4500-A29E-4CAB-8719-C685C1F0B483}"
 EndProject
@@ -53,6 +53,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.DbManager", "Nexus.Shared.DbManager\Nexus.Shared.DbManager.csproj", "{ABC38BA1-36D9-4540-9325-57493E126106}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.DbManager", "Nexus.Meetings.DbManager\Nexus.Meetings.DbManager.csproj", "{27618072-D896-4F83-BFCB-78601FB34A64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.User.ApiModule", "Nexus.User.ApiModule\Nexus.User.ApiModule.csproj", "{F8BE83F2-A8D4-4640-A680-115DB6162C94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +86,7 @@ Global
 		{062DEDA4-A740-4DF5-BECD-B28A8DF3D4CE} = {878CFDDB-EBD6-4E7E-BBAD-118528DF8388}
 		{ABC38BA1-36D9-4540-9325-57493E126106} = {23882E65-0219-476B-A3B5-39CD4868911E}
 		{27618072-D896-4F83-BFCB-78601FB34A64} = {8005C499-5B0A-47A2-BE73-22E468DAF690}
+		{F8BE83F2-A8D4-4640-A680-115DB6162C94} = {878CFDDB-EBD6-4E7E-BBAD-118528DF8388}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{24AC2FD3-BC17-46BB-9F0C-D44971350683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -170,5 +173,9 @@ Global
 		{27618072-D896-4F83-BFCB-78601FB34A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27618072-D896-4F83-BFCB-78601FB34A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27618072-D896-4F83-BFCB-78601FB34A64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BE83F2-A8D4-4640-A680-115DB6162C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BE83F2-A8D4-4640-A680-115DB6162C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BE83F2-A8D4-4640-A680-115DB6162C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BE83F2-A8D4-4640-A680-115DB6162C94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

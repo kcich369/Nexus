@@ -1,4 +1,4 @@
-using Nexus.Meetings.Endpoints;
+using Nexus.Meetings.ApiModule;
 using Nexus.Shared.Cqrs.Dispatcher;
 using Nexus.Shared.Endpoints;
 

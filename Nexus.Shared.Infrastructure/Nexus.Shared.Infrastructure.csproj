@@ -10,4 +10,9 @@
       <Folder Include="Cache\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Nexus.Shared.Domain\Nexus.Shared.Domain.csproj" />
+      <ProjectReference Include="..\Nexus.Shared.Persistence\Nexus.Shared.Persistence.csproj" />
+    </ItemGroup>
+
 </Project>

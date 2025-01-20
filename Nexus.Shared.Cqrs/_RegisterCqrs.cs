@@ -7,7 +7,7 @@ using Nexus.Shared.Cqrs.Resolvers;
 
 namespace Nexus.Shared.Mediator;
 
-public static class RegisterMediator
+public static class _RegisterCqrs
 {
     public static IServiceCollection RegisterCqrs(this IServiceCollection services)
     {

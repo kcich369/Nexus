@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Nexus.Meetings.Endpoints\Nexus.Meetings.Endpoints.csproj" />
+      <ProjectReference Include="..\Nexus.Meetings.ApiModule\Nexus.Meetings.ApiModule.csproj" />
       <ProjectReference Include="..\Nexus.User.Endpoints\Nexus.User.Endpoints.csproj" />
     </ItemGroup>
 
