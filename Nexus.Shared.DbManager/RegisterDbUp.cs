@@ -3,7 +3,7 @@ using DbUp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Nexus.Shared.DbScriptsManager;
+namespace Nexus.Shared.DbManager;
 
 public static class RegisterDbUp
 {
@@ -13,8 +13,7 @@ public static class RegisterDbUp
 
     public static void Register(string? connectionStringName = null)
     {
-        var connectionString = GetConnectionString(connectionStringName);
-        
+        var connectionString = ConfigurationBuilderHelper.GetConnectionStringValue(connectionStringName);
         EnsureDatabase.For.SqlDatabase(connectionString);
 
         var upgrader = DeployChanges.To
@@ -23,27 +22,15 @@ public static class RegisterDbUp
             .JournalToSqlTable(Schema, GetTableName())
             .WithScriptsFromFileSystem(FolderName)
             .Build();
-
         if (!upgrader.IsUpgradeRequired())
             return;
+
         var result = upgrader.PerformUpgrade();
         var text = result.Successful ? "Success!" : "Failure!!!";
         Console.WriteLine(text);
     }
 
-    private static string GetConnectionString(string? connectionStringName = null)
-    {
-        var config = ConfigurationBuilderHelper.CreateBuilder()
-            .Build();
-        var connectionString = "";
-        if (!string.IsNullOrEmpty(connectionStringName))
-            connectionString = config.GetConnectionString(connectionStringName!);
-        connectionString = config.GetConnectionString();
-
-        return connectionString;
-    }
-    
-    public static string GetTableName()
+    private static string GetTableName()
     {
         var projectName = Assembly.GetCallingAssembly().FullName?.Split('.')[1];
         return $"{projectName}{TableName}";

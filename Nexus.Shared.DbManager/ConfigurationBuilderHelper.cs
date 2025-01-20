@@ -1,13 +1,25 @@
 ﻿using System.Collections.Immutable;
 using Microsoft.Extensions.Configuration;
 
-namespace Nexus.Shared.DbScriptsManager;
+namespace Nexus.Shared.DbManager;
 
-public static class ConfigurationBuilderHelper
+internal static class ConfigurationBuilderHelper
 {
     private const string AppSettingsJson = "appsettings.json";
     private const string ConnectionStrings = "ConnectionStrings";
 
+    public static string GetConnectionStringValue(string? connectionStringName = null)
+    {
+        var config = ConfigurationBuilderHelper.CreateBuilder()
+            .Build();
+        
+        var connectionString = string.IsNullOrEmpty(connectionStringName)
+            ? config.GetConnectionString()
+            : config.GetConnectionString(connectionStringName!);
+
+        return connectionString!;
+    }
+    
     public static IConfigurationBuilder CreateBuilder()
     {
         var builder = new ConfigurationBuilder()

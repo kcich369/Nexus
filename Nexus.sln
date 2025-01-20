@@ -50,7 +50,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.Contracts", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.User.Contracts", "Nexus.User.Contracts\Nexus.User.Contracts.csproj", "{062DEDA4-A740-4DF5-BECD-B28A8DF3D4CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.DbScriptsManager", "Nexus.Shared.DbScriptsManager\Nexus.Shared.DbScriptsManager.csproj", "{ABC38BA1-36D9-4540-9325-57493E126106}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Shared.DbManager", "Nexus.Shared.DbManager\Nexus.Shared.DbManager.csproj", "{ABC38BA1-36D9-4540-9325-57493E126106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nexus.Meetings.DbManager", "Nexus.Meetings.DbManager\Nexus.Meetings.DbManager.csproj", "{27618072-D896-4F83-BFCB-78601FB34A64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,7 @@ Global
 		{ADA552AD-D8CE-425B-A4DE-CDA34BE1DB13} = {8005C499-5B0A-47A2-BE73-22E468DAF690}
 		{062DEDA4-A740-4DF5-BECD-B28A8DF3D4CE} = {878CFDDB-EBD6-4E7E-BBAD-118528DF8388}
 		{ABC38BA1-36D9-4540-9325-57493E126106} = {23882E65-0219-476B-A3B5-39CD4868911E}
+		{27618072-D896-4F83-BFCB-78601FB34A64} = {8005C499-5B0A-47A2-BE73-22E468DAF690}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{24AC2FD3-BC17-46BB-9F0C-D44971350683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -163,5 +166,9 @@ Global
 		{ABC38BA1-36D9-4540-9325-57493E126106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABC38BA1-36D9-4540-9325-57493E126106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABC38BA1-36D9-4540-9325-57493E126106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27618072-D896-4F83-BFCB-78601FB34A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27618072-D896-4F83-BFCB-78601FB34A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27618072-D896-4F83-BFCB-78601FB34A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27618072-D896-4F83-BFCB-78601FB34A64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
