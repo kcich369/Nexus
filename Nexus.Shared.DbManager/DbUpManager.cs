@@ -21,6 +21,7 @@ public static class DbUpManager
             .WithTransactionPerScript()
             .JournalToSqlTable(Schema, GetTableName())
             .WithScriptsFromFileSystem(FolderName)
+            .LogToConsole()
             .Build();
         if (!upgrader.IsUpgradeRequired())
             return;
@@ -32,7 +33,7 @@ public static class DbUpManager
 
     private static string GetTableName()
     {
-        var projectName = Assembly.GetCallingAssembly().FullName?.Split('.')[1];
+        var projectName = Assembly.GetEntryAssembly()!.GetName().Name?.Split('.')[1];
         return $"{projectName}{TableName}";
     }
 }

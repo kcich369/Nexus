@@ -12,14 +12,14 @@ internal static class ConfigurationBuilderHelper
     {
         var config = ConfigurationBuilderHelper.CreateBuilder()
             .Build();
-        
+
         var connectionString = string.IsNullOrEmpty(connectionStringName)
             ? config.GetConnectionString()
             : config.GetConnectionString(connectionStringName!);
 
         return connectionString!;
     }
-    
+
     public static IConfigurationBuilder CreateBuilder()
     {
         var builder = new ConfigurationBuilder()
@@ -48,7 +48,7 @@ internal static class ConfigurationBuilderHelper
         return name;
     }
 
-    public static string GetConnectionString(this IConfiguration configuration)
+    private static string GetConnectionString(this IConfiguration configuration)
     {
         var connectionStringsSection = configuration.GetSection(ConnectionStrings);
         var value = connectionStringsSection.GetChildren()
